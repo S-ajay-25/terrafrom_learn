@@ -1,12 +1,18 @@
 provider "aws" {
-  region     = "us-west-2"
-  access_key = "my-access-key"
-  secret_key = "my-secret-key"
+  version = "~> 4.0"
+  region  = "us-east-1"
 }
+# provider "aws" {
+#   region     = "us-west-2"
+# #   access_key = "my-access-key"
+# #   secret_key = "my-secret-key"
+# }
 
 resource "aws_vpc" "first_vpc" {
   cidr_block       = "10.0.0.0/16"
   instance_tenancy = "default"
+  enable_dns_support = true
+  enable_dns_hostnames = true
 
   tags = {
     Name = "VPC"
